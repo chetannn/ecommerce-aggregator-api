@@ -8,3 +8,5 @@
 ``` npm run dev ``` or ``` yarn dev ```
 ### Run the server in watch mode
 ``` npm run watch ``` or ``` yarn watch ```
+### Run Test Suit
+```npm test ``` or ``` yarn test```
