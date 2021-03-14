@@ -7,6 +7,9 @@
     "dialect": "sqlite",
      "dialectOptions": {
       "storage": "scrapper.sqlite3"
+    },
+    "authentication": {
+      "jwtSecret": "supersecretkey"
     }
   },
   "test": {
