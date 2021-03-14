@@ -13,6 +13,6 @@
 
 ### Some useful commands
 ``` npx sequelize-cli db:migrate```
-``` npx sequelize-cli db:seed:all``
+``` npx sequelize-cli db:seed:all```
 ``` npx sequelize-cli seed:generate --name users ```
 ``` npx sequelize-cli model:generate --name Item --attributes title:string,link:string,userId:integer ```
