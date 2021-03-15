@@ -10,7 +10,8 @@
     },
     "authentication": {
       "jwtSecret": "supersecretkey"
-    }
+    },
+    "requiresAuth": true
   },
   "test": {
     "username": "root",
