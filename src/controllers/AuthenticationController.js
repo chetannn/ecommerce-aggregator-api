@@ -1,10 +1,6 @@
-// const Joi = require('joi')
 const { User } = require('../database/models')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const env = process.env.NODE_ENV || 'development'
-const config = require(__dirname + '../../config/config.json')[env]
-
 
 function jwtSignUser(user) {
     const ONE_WEEK = 60 * 60 * 24 *  7 
@@ -17,7 +13,10 @@ function jwtSignUser(user) {
 module.exports = {
     async register(req, res, next) {
         try {
-            const user = await User.create(req.body)
+            let userFromRequest = req.body
+            const salt = await bcrypt.genSalt(10)
+            userFromRequest.password = await bcrypt.hash(userFromRequest.password, salt)
+            const user = await User.create(userFromRequest)
             res.status(201).send(user.toJSON())
         }
         catch(err) {
@@ -64,25 +63,21 @@ module.exports = {
                 }
             })
 
-          
             if(!user) {
                 return res.status(403).send({
                     error: 'The login information was incorrect'
                 })
             }
 
-            // const isPasswordValid = await user.comparePassword(password)
-            const isPasswordValid = await bcrypt.compare(password, user.password)
-
-            if(isPasswordValid) {
+            const isPasswordValid = await user.comparePassword(password)
+            if(!isPasswordValid) {
                 return res.status(403).send({
                     error: 'The login information was incorrect'
                 })
             }
-            const userJson = user.toJSON()
             res.send({
-                user: userJson,
-                token: jwtSignUser(userJson)
+                user: user.toJSON(),
+                token: user.generateAuthToken()
             })
         }
         catch(err) {

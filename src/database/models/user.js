@@ -1,21 +1,9 @@
 'use strict';
-const { Model } = require('sequelize');
-const bcrypt = require('bcrypt');
-
-function hashPassword(user, options) {
-  const SALT_FACTOR = 8
-
-  if(!user.changed('password')) {
-    return;
-  }
-
-  return bcrypt
-        .genSalt(SALT_FACTOR)
-        .then(salt => bcrypt.hash(user.password, salt, null))
-        .then(hash =>  {
-          user.setDataValue('password', hash)
-        })
-}
+const { Model } = require('sequelize')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const env = process.env.NODE_ENV || 'development'
+const config = require(__dirname + '/../../config/config.json')[env]
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -27,6 +15,17 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compare(password, this.password)
   }
 
+  User.prototype.generateAuthToken = function () {
+    const ONE_WEEK = 60 * 60 * 24 *  7 
+    const token = jwt.sign({
+      id: this.id,
+      email: this.email
+    }, config.authentication.jwtSecret, {
+      expiresIn: ONE_WEEK
+    })
+    return token
+  }
+
   User.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -34,12 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'User',
-    hooks: {
-      beforeCreate: hashPassword,
-      beforeUpdate: hashPassword,
-      beforeSave: hashPassword
-    }
-  });
+    modelName: 'User'
+  })
   return User;
-};
+}
