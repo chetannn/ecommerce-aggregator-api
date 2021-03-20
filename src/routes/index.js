@@ -8,4 +8,5 @@ module.exports = (app) => {
     app.get('/users', [auth], TestController.getAllUsers),
     app.post('/auth/register', AuthenticationController.register),
     app.post('/auth/login', AuthenticationController.login)
+    app.get('/auth/me', [auth], AuthenticationController.me)
 }

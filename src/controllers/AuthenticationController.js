@@ -1,14 +1,5 @@
 const { User } = require('../database/models')
-const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-
-function jwtSignUser(user) {
-    const ONE_WEEK = 60 * 60 * 24 *  7 
-    return jwt.sign(user, config.authentication.jwtSecret, {
-        expiresIn: ONE_WEEK,
-
-    })
-}
 
 module.exports = {
     async register(req, res, next) {
@@ -84,6 +75,15 @@ module.exports = {
             return res.status(500).send({
                 error: 'An error has occured trying to log in' + err
             })
+        }
+    },
+
+    async me(req, res, next) {
+        try {
+           return res.json({ message: 'me'})
+        }
+        catch(err) {
+
         }
     }
 }
