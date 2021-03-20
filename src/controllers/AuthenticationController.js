@@ -12,16 +12,18 @@ module.exports = {
             })
 
             if(user)
-            res.status(400).send({
+            return res.status(400).send({
                 error: 'This email account is already in use'
             })
 
             const rounds = 10
             const salt = await bcrypt.genSalt(rounds)
             userFromRequest.password = await bcrypt.hash(userFromRequest.password, salt)
-            res.status(201).send(await User.create(userFromRequest).toJSON())
+            const userFromDb = await User.create(userFromRequest)
+            res.status(201).json({user: userFromDb.toJSON() })
         }
         catch(err) {
+            console.log(err)
             res.status(400).send({
                 error: err
             })
