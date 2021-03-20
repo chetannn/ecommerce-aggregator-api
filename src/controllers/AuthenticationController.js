@@ -5,14 +5,25 @@ module.exports = {
     async register(req, res, next) {
         try {
             let userFromRequest = req.body
-            const salt = await bcrypt.genSalt(10)
+            const user = await User.findOne({
+                where: {
+                    email: userFromRequest.email
+                }
+            })
+
+            if(user)
+            res.status(400).send({
+                error: 'This email account is already in use'
+            })
+
+            const rounds = 10
+            const salt = await bcrypt.genSalt(rounds)
             userFromRequest.password = await bcrypt.hash(userFromRequest.password, salt)
-            const user = await User.create(userFromRequest)
-            res.status(201).send(user.toJSON())
+            res.status(201).send(await User.create(userFromRequest).toJSON())
         }
         catch(err) {
             res.status(400).send({
-                error: 'This email account is already in use'
+                error: err
             })
         }
     },
