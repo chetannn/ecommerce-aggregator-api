@@ -4,9 +4,8 @@ const config = require(__dirname + '/../config/config.json')[env]
 
 module.exports = function(req, res, next) {
     //TODO: First Check whether to use authentication to access to endpoints using config
-    if(config.requiresAuth) return next()
-
     //TODO: If the authentication is disabled from application then immediately return the next middleware
+    if(config.requiresAuth) return next()
 
     //TODO: Get the jwt token from header 
     const token = req.header('x-auth-token')
