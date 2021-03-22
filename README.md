@@ -11,6 +11,15 @@
 ### Run Test Suit
 ```npm test ``` or ``` yarn test```
 
+### Database Migrate
+``` npm run db:migrate ``` or ``` yarn db:migrate ```
+
+### Database Seed
+``` npm run db:seed ``` or ``` yarn db:seed ```
+
+### Scrapping Script
+``` npm run scrap ``` or ``` yarn scrap ```
+
 ### Some useful commands
 ``` npx sequelize-cli db:migrate```
 ``` npx sequelize-cli db:seed:all```
