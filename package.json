@@ -6,7 +6,9 @@
   "scripts": {
     "test": "jest",
     "dev": "node src/app.js",
-    "watch": "nodemon src/app.js"
+    "watch": "nodemon src/app.js",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seed": "npx sequelize-cli db:seed:all"
   },
   "keywords": [],
   "author": "",
