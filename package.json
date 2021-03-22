@@ -8,13 +8,15 @@
     "dev": "node src/app.js",
     "watch": "nodemon src/app.js",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "db:seed": "npx sequelize-cli db:seed:all"
+    "db:seed": "npx sequelize-cli db:seed:all",
+    "scrap": "node src/scrapper/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cheerio": "^1.0.0-rc.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -22,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
+    "request": "^2.88.2",
     "sequelize": "^6.5.0",
     "sqlite3": "^5.0.2",
     "swagger-jsdoc": "^7.0.0-rc.6",
