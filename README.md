@@ -1,5 +1,7 @@
 ## Ecommerce Aggregator API
 
+![Node.js CI](https://github.com/chetannn/ecommerce-aggregator-api/nodejs.yml/badge.svg)
+
 ### Install Dependencies
 ``` npm install``` or ```yarn ```
 ### Create and copy env file
