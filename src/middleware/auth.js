@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
     if (!token) return res.status(401).json({error: 'Access denied. No token provided.'})
     //TODO: decode the token and if the token is decoded successfully then forward the request to the next middleware with the decoded user from the token 
     try {
-        const decoded = jwt.verify(token, 'supersecretkey')
+        const decoded = jwt.verify(token, config.authentication.jwtSecret)
         req.user = decoded
         next()
       } catch (ex) {
