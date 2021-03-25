@@ -14,6 +14,7 @@ module.exports = (app) => {
     app.post('/auth/login', AuthenticationController.login),
     app.get('/auth/me', [auth], AuthenticationController.me),
     app.get('/users', [auth, isAdmin], UsersController.getAllUsers),
+    app.put('/profile/update', [auth], UsersController.updateProfile),
     app.get('/products', [auth], ProductsController.getAllProducts),
     app.post('/products', [auth, isAdmin], ProductsController.createProduct)
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)

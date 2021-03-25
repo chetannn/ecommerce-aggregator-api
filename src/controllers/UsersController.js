@@ -14,5 +14,25 @@ module.exports = {
     } catch (error) {
       return res.status(500).send(error.message)
     }
+  },
+  async updateProfile(req, res) {
+    //TODO: If in case anyone passes the middleware
+    if(!req.user) return res.status(401).json({ message: 'Unauthorized access' })
+    let flag = false
+
+    try {
+        const result = await User.update(req.body, {
+          where: { id: req.user.id }
+        })
+
+        if(result && result[0]) {
+            flag = true
+        }
+
+        res.json({ message: 'User update successfully', success: flag })
+    }
+    catch(e) {
+      res.status(400).json({ message: e.message })
+    }
   }
 }

@@ -186,3 +186,14 @@ content-type: application/json
 	"source": "Sastodeal",
 	"imageUrl": "https://cdn.sastodeal.com/catalog/product/i/n/in-full-hd-tv-t5500-ua43t5500akxxl-ua--r----auxxl-227105592.jpg"
 }]
+
+###
+
+PUT http://localhost:3000/profile/update HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJwcmFzaXNAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjE2Njc5ODE2LCJleHAiOjE2MTcyODQ2MTZ9.3sBN7fL1fa6NzBdwdchMkrragvGd-ES4sUDZ4Zv-T_o
+content-type: application/json
+
+{
+	"firstName": "Prasis",
+	"lastName": "Upreti"
+}
