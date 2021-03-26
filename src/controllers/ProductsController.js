@@ -1,20 +1,30 @@
 const { Product } = require('../database/models')
+const { Pagination } = require('../helpers/pagination')
 
 module.exports = {
   async getAllProducts(req, res) {
     try {
       //TODO: First get the total count from db
       const count = await Product.count()
-      if(count ==  0) res.status(404).json({ message: 'products not found', data: products })
-      
+      if(count ==  0) res.status(404).json({ message: 'products not found', data: null })
+
+      const paginationInstance = new Pagination(count)
+      paginationInstance.paginate(+req.query.page || 1, +req.query.perPage || 5)
+
+      //TODO: Calculate the offset and limit
+      const offset = (paginationInstance.currentPage - 1) * paginationInstance.perPage
+      const limit = paginationInstance.perPage
+
       const products = await Product.findAll({
         where: {
-          // offset: 3,
         },
-        limit: 5
+        offset,
+        limit
       })
 
-      res.json({ message: 'products found successfully', data: products })
+      paginationInstance.items = products
+
+      res.json({ message: 'products found successfully', data: paginationInstance })
 
     } catch (e) {
       res.status(400).send(e.message)
