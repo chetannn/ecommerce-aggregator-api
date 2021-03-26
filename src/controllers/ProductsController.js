@@ -3,11 +3,19 @@ const { Product } = require('../database/models')
 module.exports = {
   async getAllProducts(req, res) {
     try {
-      const products = await Product.findAll()
-      if (products == null)
-        res.status(404).json({ message: 'products not found', data: products })
+      //TODO: First get the total count from db
+      const count = await Product.count()
+      if(count ==  0) res.status(404).json({ message: 'products not found', data: products })
+      
+      const products = await Product.findAll({
+        where: {
+          // offset: 3,
+        },
+        limit: 5
+      })
 
       res.json({ message: 'products found successfully', data: products })
+
     } catch (e) {
       res.status(400).send(e.message)
     }
