@@ -2,7 +2,8 @@ const {
   TestController,
   AuthenticationController,
   UsersController,
-  ProductsController
+  ProductsController,
+  SourceController
 } = require('../controllers')
 
 const auth = require('../middleware/auth')
@@ -18,4 +19,6 @@ module.exports = (app) => {
     app.get('/products', [auth], ProductsController.getAllProducts),
     app.post('/products', [auth, isAdmin], ProductsController.createProduct)
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)
+    app.post('/sources', [auth, isAdmin], SourceController.createSource)
+    app.get('/sources', [auth], SourceController.getAll)
 }
