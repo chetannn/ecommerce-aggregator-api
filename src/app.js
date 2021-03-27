@@ -16,11 +16,17 @@ require('dotenv').config()
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'uploads')
+        cb(null, path.join(__dirname + '/../public/uploads'))
     },
     filename: function(req, file, cb) {
-        cb(null, file.filename + '-' + Date().now() + path.extname(file.originalname))
+        cb(null, file.originalname + '-' + new Date().toDateString() + path.extname(file.originalname))
     }
+})
+
+const upload = multer({ storage })
+
+app.post('/profile/avatar', upload.single('avatar'), (req, res, next) => {
+     res.json({ message: 'done' })
 })
 
 const PORT = process.env.PORT || 3000

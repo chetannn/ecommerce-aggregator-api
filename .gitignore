@@ -132,3 +132,5 @@ temp/
 *.sqlite3
 *.sqlite
 127.0.0.1
+
+public/uploads/*
