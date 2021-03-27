@@ -21,4 +21,5 @@ module.exports = (app) => {
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
+    app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
 }

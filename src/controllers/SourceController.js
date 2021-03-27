@@ -5,7 +5,8 @@ module.exports = {
     async getAll(req, res) {
         try {
             const count = await Source.count()
-            if(count === 0) res.status(404).json({ message: 'sources not found', data: null })
+            console.log(count)
+            if(count === 0) return res.status(404).json({ message: 'sources not found', data: null })
             const paginationInstance = new Pagination(count)
             paginationInstance.paginate(+req.query.page, +req.query.perPage)
 

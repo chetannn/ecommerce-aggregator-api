@@ -23,6 +23,9 @@ module.exports = {
       isAdmin: {
         type: Sequelize.BOOLEAN
       },
+      profilePath: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

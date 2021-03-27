@@ -6,7 +6,7 @@ module.exports = {
     try {
       //TODO: First get the total count from db
       const count = await Product.count()
-      if(count ==  0) res.status(404).json({ message: 'products not found', data: null })
+      if(count ==  0) return res.status(404).json({ message: 'products not found', data: null })
 
       const paginationInstance = new Pagination(count)
       paginationInstance.paginate(+req.query.page || 1, +req.query.perPage || 5)

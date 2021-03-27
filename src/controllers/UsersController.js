@@ -1,4 +1,5 @@
 const { User } = require('../database/models')
+const uploadFile = require('../middleware/upload')
 
 module.exports = {
   async getAllUsers(req, res) {
@@ -8,7 +9,7 @@ module.exports = {
       })
       
       if (users == null)
-        res.status(404).json({ message: 'users not found', data: users })
+        return res.status(404).json({ message: 'users not found', data: users })
 
       return res.status(200).json({ users })
     } catch (error) {
@@ -34,5 +35,17 @@ module.exports = {
     catch(e) {
       res.status(400).json({ message: e.message })
     }
+  },
+  async uploadAvatar(req, res) {
+      try {
+           await uploadFile(req, res)
+          const path = `/uploads/${req.file.filename}`
+          await User.update({ profilePath: path }, { where: { id: req.user.id  } })
+          res.json({ message: 'done', fileName: req.file.filename })
+      }
+      catch(e) {
+        res.status(400).json({ message: e.message })
+      }
+      
   }
 }
