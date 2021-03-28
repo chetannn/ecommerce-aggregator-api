@@ -30,8 +30,8 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJwcmFza
 content-type: application/json
 
 {
-	"name": "OkDam",
-	"url": "http://okdam.com"
+	"name": "Daraz",
+	"url": "http://daraz.com.np"
 }
 
 ###

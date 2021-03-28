@@ -1,6 +1,7 @@
 const cheerio = require('cheerio')
 const request = require('request')
 const fs = require('fs')
+const { SASTODEAL } = require('./config')
 
 const url = 'https://www.sastodeal.com/electronic/televisions/samsung.html'
 
@@ -13,24 +14,16 @@ request(url, (err, response, body) => {
       xmlMode: true
     }
   })
-  $(
-    `#maincontent > .columns > div.column.main > #amasty-shopby-product-list > .products-grid > ol > li`
-  ).each(function (item, idx) {
+  $(SASTODEAL.container).each(function (item, idx) {
     const productName = $(this)
-      .find('div.product-item-details > strong > a')
+      .find(SASTODEAL.productName)
       .text()
       .trim()
-    const price = $(this)
-      .find(
-        `div.product-item-details > div.price-final_price > span.pricenew > span.price-final_price > span.price-wrapper`
-      )
-      .data('price-amount')
-    const productLink = $(this).find('div.product-item-info > a').attr('href')
-    const imageUrl = $(this)
-      .find(
-        'div.product-item-info > a > span.product-image-container > span.product-image-wrapper'
-      )
-      .html()
+
+    const price = $(this).find(SASTODEAL.price).data('price-amount')
+    const productLink = $(this).find(SASTODEAL.productLink).attr('href')
+    const imageUrl = $(this).find(SASTODEAL.imageUrl).html()
+
     const finalImageUrl = imageUrl
       .split('\n')[0]
       .split(' ')[3]
@@ -47,6 +40,7 @@ request(url, (err, response, body) => {
 
     products.push(product)
   })
+  
   let productJSON = JSON.stringify(products)
   fs.writeFile('products.json', productJSON, (err, data) => {
     if (err) throw new Error(err)
