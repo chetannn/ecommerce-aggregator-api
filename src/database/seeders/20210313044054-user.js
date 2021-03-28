@@ -12,11 +12,11 @@ module.exports = {
      * }], {});
     */
      return queryInterface.bulkInsert('Users', [{
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'demo@demo.com',
+      firstName: 'Prasis',
+      lastName: 'Upreti',
+      email: 'prasis@gmail.com',
       password: '123456',
-      isAdmin: false,
+      isAdmin: true,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
