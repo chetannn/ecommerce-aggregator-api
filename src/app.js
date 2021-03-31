@@ -1,4 +1,4 @@
-import express from 'express'
+const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 const path = require('path')
