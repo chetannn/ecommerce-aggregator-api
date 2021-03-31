@@ -9,7 +9,8 @@
     "watch": "nodemon src/app.js",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seed": "npx sequelize-cli db:seed:all",
-    "scrap": "node src/scrapper/index.js"
+    "scrap": "node src/scrapper/index.js",
+    "scrap:ok": "node src/scrapper/ok.js"
   },
   "keywords": [],
   "author": "",
