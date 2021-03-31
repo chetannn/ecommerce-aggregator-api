@@ -22,4 +22,5 @@ module.exports = (app) => {
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
     app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
+    app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
 }

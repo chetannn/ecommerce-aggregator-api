@@ -47,5 +47,23 @@ module.exports = {
         res.status(400).json({ message: e.message })
       }
       
+  },
+  async deleteUser(req, res) {
+    const userId = +req.params.id
+    try {
+      const user = await User.findOne({
+        where: {
+          id: userId
+        }
+      })
+
+      if(!user) return res.status(400).json({ message: 'Invalid Operation', success: false })
+
+      await user.destroy()
+      return res.status(200).json({ message: 'User Delete Successfully', success: true })
+    }
+    catch(e) {
+      res.status(400).json({ message: e.message })
+    }
   }
 }
