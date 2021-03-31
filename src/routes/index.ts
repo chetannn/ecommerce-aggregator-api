@@ -9,7 +9,7 @@ const {
 const auth = require('../middleware/auth')
 const isAdmin = require('../middleware/admin')
 
-module.exports = (app) => {
+module.exports = (app: any) => {
     app.get('/test', TestController.test),
     app.post('/auth/register', AuthenticationController.register),
     app.post('/auth/login', AuthenticationController.login),
