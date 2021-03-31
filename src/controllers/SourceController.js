@@ -36,7 +36,22 @@ module.exports = {
             res.status(400).send(e.message)
           }
     },
-     deleteSource(req, res) {
+     async deleteSource(req, res) {
+        const sourceId = +req.params.id
+        try {
+            const source = await Source.findOne({
+                where: {
+                    id: sourceId
+                }
+            })
+
+          if(!source) return res.status(400).json({ message: 'Invalid Operation', success: false })
+          await source.destroy()
+          return res.status(200).json({ message: 'Source Delete Successfully', success: true })
+        }
+        catch(e) {
+            res.status(400).send(e.message)
+        }
 
     }
 }
