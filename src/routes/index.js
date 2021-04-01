@@ -3,7 +3,8 @@ const {
   AuthenticationController,
   UsersController,
   ProductsController,
-  SourceController
+  SourceController,
+  CategoryLinksController
 } = require('../controllers')
 
 const auth = require('../middleware/auth')
@@ -25,4 +26,9 @@ module.exports = (app) => {
     app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)
     app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
     app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
+    app.get('/categoryLinks', [auth, isAdmin], CategoryLinksController.getAll)
+    app.get('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.getById)
+    app.delete('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.deleteCategoryLink)
+    app.put('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.updateCategoryLink)
+
 }
