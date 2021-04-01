@@ -15,12 +15,14 @@ module.exports = (app) => {
     app.post('/auth/login', AuthenticationController.login),
     app.get('/auth/me', [auth], AuthenticationController.me),
     app.get('/users', [auth, isAdmin], UsersController.getAllUsers),
+    app.get('/users/statistics', [auth, isAdmin], UsersController.getStatistics),
     app.put('/profile/update', [auth], UsersController.updateProfile),
     app.get('/products', [auth], ProductsController.getAllProducts),
     app.post('/products', [auth, isAdmin], ProductsController.createProduct)
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
+    app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)
     app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
     app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
 }

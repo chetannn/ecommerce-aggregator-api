@@ -65,5 +65,9 @@ module.exports = {
     catch(e) {
       res.status(400).json({ message: e.message })
     }
-  }
+  },
+  async getStatistics(req, res) {
+    const result = await User.getStatistics()
+    return res.status(200).json({ status: true, data: result[0] })
+ }
 }

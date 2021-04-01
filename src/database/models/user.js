@@ -8,6 +8,13 @@ const config = require(__dirname + '/../../config/config.json')[env]
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {}
+
+    static getStatistics() {
+      return sequelize.query(`
+      select 
+      count(1) as total from Users
+      `, { raw: true })
+    }
   }
 
   User.prototype.comparePassword = function (password) {

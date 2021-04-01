@@ -19,7 +19,7 @@ POST http://localhost:3000/auth/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "prasis@gmail.com",
+    "email": "deep@gmail.com",
     "password": "123456"
 }
 
@@ -223,3 +223,8 @@ content-type: application/json
 	"firstName": "Prasis",
 	"lastName": "Upreti"
 }
+
+###
+GET http://localhost:3000/sources/statistics HTTP/1.1
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJkZWVwQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxNzI0MTg3NCwiZXhwIjoxNjE3ODQ2Njc0fQ.OA4nsJEWpV-uqOdxvCE4-bEaxq5FG4JjUDGFO2JRofs
+content-type: application/json

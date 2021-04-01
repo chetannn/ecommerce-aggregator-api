@@ -53,5 +53,9 @@ module.exports = {
             res.status(400).send(e.message)
         }
 
+    },
+     async getStatistics(req, res) {
+       const result = await Source.getStatistics()
+       return res.status(200).json({ status: true, data: result[0] })
     }
 }

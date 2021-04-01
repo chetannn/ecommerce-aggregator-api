@@ -2,17 +2,19 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Source extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+    static associate(models) {}
+
+     static getStatistics() {
+      return sequelize.query(`
+      select 
+      count(1) as total from Sources
+      `, { raw: true })
     }
   };
+
   Source.init({
     name: DataTypes.STRING,
     url: DataTypes.STRING
@@ -20,5 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Source',
   });
+
+  
   return Source;
 };
