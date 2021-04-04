@@ -3,7 +3,7 @@ const request = require('request')
 const fs = require('fs')
 const { OKDAM } = require('./config')
 
-const url = 'https://www.okdam.com/category/mobile-accessories'
+const url = 'https://www.okdam.com/category/camera-and-accessories'
 
 request(url, (err, response, body) => {
   if (err) throw new Error(err)

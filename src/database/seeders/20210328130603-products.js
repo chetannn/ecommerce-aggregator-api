@@ -415,7 +415,222 @@ module.exports = {
         "imageUrl": "https://www.okdam.com/public/upload/product/tiny/511GDftn1TL._AC_-5ef5e3632fd4a7437.jpg",
         createdAt: new Date(),
         updatedAt: new Date()
-    }], {});
+    },  {
+      "productName": "Canon EOS 2000D 24.2MP Digital SLR Camera With EF-S18-55 IS  (16 GB Card )- Black",
+      "productLink": "https://www.okdam.com/canon-eos-2000d-dslr-camera-and-ef-s-18-55-mm-f35-56-ii-lens-black",
+      "price": " 60000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/s-l640-5e5fef12a241d9751.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon EOS 4000D 18.0MP Digital SLR Camera With EF-S18-55 IS (16 GB Card )- Black",
+      "productLink": "https://www.okdam.com/canon-eos-4000d-dslr-camera-body",
+      "price": " 56000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-eos-4000d-dslr-camera-body-605aa39450acb.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon Digital Slr Camera Body [Eos 80D] With Ef-S 18-55Mm F/3.5-5.6 Image Stabilization Stm Lens With 24.2 Megapixel (Aps-C) Cmos Sensor And Dual Pixel Cmos Af - Black",
+      "productLink": "https://www.okdam.com/canon-digital-slr-camera-body-eos-80d-with-ef-s-18-55mm-f35-56-image-stabilization-stm-lens-with-242-megapixel-aps-c-cmos-sensor-and-dual-pixel-cmos-af-black-49196",
+      "price": " 135000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-digital-slr-camera-body-eos-80d-with-ef-s-18-55mm-f35-56-image-stabilization-stm-lens-with-242-megapixel-aps-c-cmos-sensor-and-dual-pixel-cmos-af-black-606435ed83444.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon Eos 90D Digital Slr Camera With Ef-S 18-135Mm F/3.5-5.6 Image Stabilisation Usm Lens Kit (16 Gb Sd Card) - Black",
+      "productLink": "https://www.okdam.com/canon-eos-90d-digital-slr-camera-with-ef-s-18-135mm-f35-56-image-stabilisation-usm-lens-kit-16-gb-sd-card-black-94920",
+      "price": " 199000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Canon-EOS-90D-Digital-SLR-Camera-with-18-135-is-USM-Lens-606431b9aa704.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G VR Black",
+      "productLink": "https://www.okdam.com/nikon-d3500-w-af-p-dx-nikkor-18-55mm-f35-56g-vr-black-98752",
+      "price": " 69000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/nikon-d3500-w-af-p-dx-nikkor-18-55mm-f35-56g-vr-black-605d99e910ec6.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon EOS 250D 24.1MP Digital SLR Camera + EF-S 18-55mm f4 is STM Lens (Black) + 16GB Card + Camera Bag",
+      "productLink": "https://www.okdam.com/canon-eos-250d-241mp-digital-slr-camera-ef-s-18-55mm-f4-is-stm-lens-black-16gb-card-camera-bag-47286",
+      "price": " 98000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-eos-250d-241mp-digital-slr-camera-ef-s-18-55mm-f4-is-stm-lens-black-16gb-card-camera-bag-6064332ac0ec9.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Nikon D7200 24.2 Mp Digital Slr Camera (Black) With Af-S 18-140Mm Vr Kit Lens And 16Gb Card",
+      "productLink": "https://www.okdam.com/nikon-d7200-242-mp-digital-slr-camera-black-with-af-s-18-140mm-vr-kit-lens-and-16gb-card-45897",
+      "price": " 138500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/nikon-d7200-242-mp-digital-slr-camera-black-with-af-s-18-140mm-vr-kit-lens-and-16gb-card-60642673c4b4f.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon EF-S 18-135mm f/3.5-5.6 IS Standard Zoom Lens for Canon Digital SLR Cameras",
+      "productLink": "https://www.okdam.com/canon-ef-s-18-135mm-f35-56-is-standard-zoom-lens-for-canon-digital-slr-cameras-44403",
+      "price": " 45000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-ef-s-18-135mm-f35-56-is-standard-zoom-lens-for-canon-digital-slr-cameras-60642bf8cff44.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Nikon D5600 + Af-P 18-55 Vr Dslr Camera (16 Gb Card ) - Black",
+      "productLink": "https://www.okdam.com/nikon-d5600-af-p-18-55-vr-dslr-camera-16-gb-card-black-16356",
+      "price": " 88000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Nikon-D5600-Digital-Camera-18-55mm-VR-Kit-605d9ffa70853.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Nikon AF-S DX NIKKOR 18-140mm f/3.5-5.6G ED Vibration Reduction Zoom Lens with Auto Focus for Nikon DSLR Cameras",
+      "productLink": "https://www.okdam.com/nikon-af-s-dx-nikkor-18-140mm-f35-56g-ed-vibration-reduction-zoom-lens-with-auto-focus-for-nikon-dslr-cameras-90874",
+      "price": " 45000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/nikon-af-s-dx-nikkor-18-140mm-f35-56g-ed-vibration-reduction-zoom-lens-with-auto-focus-for-nikon-dslr-cameras-60642e95bf4eb.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon Ef-S 55-250Mm F/4-5.6 Is Ii Telephoto Zoom Lens For Dslr Camera (Black)",
+      "productLink": "https://www.okdam.com/canon-ef-s-55-250mm-f4-56-is-ii-telephoto-zoom-lens-for-dslr-camera-black-51552",
+      "price": " 35000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-ef-s-55-250mm-f4-56-is-ii-telephoto-zoom-lens-for-dslr-camera-black-6064275209cfa.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Canon EF 50mm f/1.8 STM Lens",
+      "productLink": "https://www.okdam.com/canon-ef-50mm-f18-stm-lens-44048",
+      "price": " 19500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/canon-ef-50mm-f18-stm-lens-605d9b8586600.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Fujifilm Instax Mini Twin Pack Instant Film [International Version],pack of 2 x 10 sheets (20 sheets)",
+      "productLink": "https://www.okdam.com/fujifilm-instax-mini-twin-pack-instant-film-international-versionpack-of-2-x-10-sheets-20-sheets-44190",
+      "price": " 2650",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Fujifilm-Instax-Mini-Twin-Pack-Instant-Film-605d94465c2c5.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "GoPro HERO8 Black — Waterproof Action Camera with Touch Screen 4K Ultra HD Video 12MP Photos 1080p Live Streaming Stabilization",
+      "productLink": "https://www.okdam.com/gopro-hero8-black-waterproof-action-camera-with-touch-screen-4k-ultra-hd-video-12mp-photos-1080p-live-streaming-stabilization",
+      "price": " 52000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/71UAtd5yS5L._SX679_-5e5ff0dde842f4242.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Nikon ACULON T11 8-24x25 Black Compact Zoom Binoculars",
+      "productLink": "https://www.okdam.com/nikon-aculon-t11-8-24x25-black-compact-zoom-binoculars",
+      "price": " 27000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Nikon-ACULON-T11-8-24x25-Black-Compact-Zoom-Binoculars-6017fecfb984f7406.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Syma X5HW Drone With USB Cable Camera",
+      "productLink": "https://www.okdam.com/syma-x5hw-drone-with-usb-cable-camera",
+      "price": " 21500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/fpv_realtime_x5hw-5e49139328a231038.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "26 inch Selfie Ring Light Dimmable with Tripod Stand & Cell Phone Holder, Professional Led Camera Ringlight for Live Streaming/Makeup/YouTube Video/Photography/Facebook/Tiktok",
+      "productLink": "https://www.okdam.com/26-inch-selfie-ring-light-dimmable-with-tripod-stand-and-cell-phone-holder-professional-led-camera-ringlight-for-live-streamingmakeupyoutube-videophotographyfacebooktiktok",
+      "price": " 1800",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/26-inch-Selfie-Ring-Light-Dimmable-with-Tripod-Stand-Cell-Phone-Holder,-Professional-Led-Camera-Ringlight-for-Live-Streaming-Makeup-YouTube-Video-Photography-Facebook-Tiktok-5fed9efcd38f63236.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Huawei Envizion 360 Panoramic Vr Camera",
+      "productLink": "https://www.okdam.com/huawei-envizion-360-panoramic-vr-camera",
+      "price": " 11450",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/huaweicv60360camera.jpg.2057cb3318.999x600x550-5efebbf1b2e662775.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "AR 11000 Drone with 2.4GHz Wireless Remote Control",
+      "productLink": "https://www.okdam.com/ar-11000-drone-with-24ghz-wireless-remote-control",
+      "price": " 7000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/AR-11000-Drone-with-2.4GHz-Wireless-Remote-Control-5e4919f4a71469514.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Bushnell Powerview 12x50 Binocular (Black)",
+      "productLink": "https://www.okdam.com/bushnell-powerview-12x50-binocular-black",
+      "price": " 13500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Bushnell-Powerview-12x50-Binocular-6017f5824fe362722.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Professional Light Live Ring Light For Tiktok, Facebook Live, Instagram Live, Bigo Live",
+      "productLink": "https://www.okdam.com/professional-light-live-ring-light-for-tiktok-facebook-live-instagram-live-bigo-live",
+      "price": " 1400",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Professional-Light-Live-Ring-Light-For-Tiktok,-Facebook-Live,-Instagram-Live,-Bigo-Live2-5feeab13c98d51655.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Drone TD05 with HD Camera for photos and videos",
+      "productLink": "https://www.okdam.com/drone-td05-with-hd-camera-for-photos-and-videos",
+      "price": " 9500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/td05-5e491e4746dcc2807.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Aee S50 Action Camera-434343",
+      "productLink": "https://www.okdam.com/aee-s50-action-camera-4343432",
+      "price": " 22000",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/S50-5f6491c8602f06455.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  },
+  {
+      "productName": "Mini Portable Professional Photo Light Booth Product Photography Booth Studio with 2 LED Strips– 40x40x40 cm",
+      "productLink": "https://www.okdam.com/mini-portable-professional-photo-light-booth-product-photography-booth-studio-with-2-led-strips-40x40x40-cm",
+      "price": " 4500",
+      "source": "Okdam",
+      "imageUrl": "https://www.okdam.com/public/upload/product/tiny/Mini-Portable-Professional-Photo-Light-Booth-Product-Photography-Booth-Studio-with-2-LED-Strips-5fdadcd27122c0451.jpg",
+      createdAt: new Date(),
+      updatedAt: new Date()
+  }], {});
    
   },
 
