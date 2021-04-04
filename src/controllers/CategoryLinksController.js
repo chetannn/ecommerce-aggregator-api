@@ -1,14 +1,14 @@
 const { CategoryLink } = require('../database/models')
-const Pagination = require('../helpers/pagination')
+const  { Pagination } = require('../helpers/pagination')
 
 module.exports = {
     async getAll(req, res) {
         try {
-            const id = +req.params.id
             const count = await CategoryLink.count()
             if(count === 0) return res.status(404).json({ success: true, data: null, message: 'Category Links not found' })
 
             const paginationInstance = new Pagination(count)
+            paginationInstance.paginate(+req.query.page, +req.query.perPage)
             const offset = (paginationInstance.currentPage - 1) * paginationInstance.perPage
             const limit = paginationInstance.perPage
 
@@ -16,8 +16,10 @@ module.exports = {
                 offset,
                 limit
             })
+
+            paginationInstance.items = categoryLinks
             
-            return res.json({ success: true, message: 'Category Links found', data: categoryLinks })
+            return res.json({ success: true, message: 'Category Links found', data: paginationInstance })
         }
         catch(e) {
             return res.status(400).json({ success: false, message: e.message })

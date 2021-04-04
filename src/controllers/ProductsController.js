@@ -9,7 +9,7 @@ module.exports = {
       if(count ==  0) return res.status(404).json({ message: 'products not found', data: null })
 
       const paginationInstance = new Pagination(count)
-      paginationInstance.paginate(+req.query.page || 1, +req.query.perPage || 5)
+      paginationInstance.paginate(+req.query.page, +req.query.perPage)
 
       //TODO: Calculate the offset and limit
       const offset = (paginationInstance.currentPage - 1) * paginationInstance.perPage

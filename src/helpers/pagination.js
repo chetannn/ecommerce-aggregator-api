@@ -7,6 +7,27 @@ class Pagination {
         this.totalPages = 0
         this.perPage = 0
         this.currentPage = 0
+        this.lastPage = 0
+        this.firstPage = 1
+    }
+
+    
+    getUrl(page) {
+
+    }
+
+     /**
+   * Returns url for the next page
+   */
+    getNextPageUrl() {
+
+    }
+
+    /**
+   * Returns URL for the previous page
+   */
+    getPreviousPageUrl() {
+
     }
 
     paginate(pageNumber = 1, perPage = 5) {
@@ -15,6 +36,7 @@ class Pagination {
         this.currentPage = pageNumber
         this.hasNextPage = this.totalPages > this.currentPage
         this.hasPreviousPage = this.currentPage > 1
+        this.lastPage = Math.max(Math.ceil(this.total / this.perPage), 1)
     }
 }
 
