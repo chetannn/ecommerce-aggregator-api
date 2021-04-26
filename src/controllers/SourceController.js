@@ -1,5 +1,6 @@
 const { Source } = require('../database/models')
 const { Pagination } = require('../helpers/pagination')
+const SourceRepository = require('../repositories/SourceRepository')
 
 module.exports = {
     async getAll(req, res) {
@@ -27,11 +28,10 @@ module.exports = {
     },
     async createSource(req, res) {
         try {
-            const source = await Source.create(req.body)
-      
+            const source =  await SourceRepository.create(req.body)
             res
               .status(201)
-              .json({ message: 'Source Created Successfully', data: source.toJSON() })
+              .json({ message: 'Source Created Successfully', data: source })
           } catch (e) {
             res.status(400).send(e.message)
           }
@@ -39,12 +39,7 @@ module.exports = {
      async deleteSource(req, res) {
         const sourceId = +req.params.id
         try {
-            const source = await Source.findOne({
-                where: {
-                    id: sourceId
-                }
-            })
-
+            const source = await SourceRepository.getById(sourceId)
           if(!source) return res.status(400).json({ message: 'Invalid Operation', success: false })
           await source.destroy()
           return res.status(200).json({ message: 'Source Delete Successfully', success: true })

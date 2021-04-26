@@ -70,4 +70,4 @@ module.exports = {
     const result = await User.getStatistics()
     return res.status(200).json({ status: true, data: result[0] })
  }
-}
+} 

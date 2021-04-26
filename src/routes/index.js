@@ -24,6 +24,7 @@ module.exports = (app) => {
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
     app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)
+    app.delete('/sources/:id', [auth, isAdmin], SourceController.deleteSource)
     app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
     app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
     app.get('/categoryLinks', [auth, isAdmin], CategoryLinksController.getAll)
