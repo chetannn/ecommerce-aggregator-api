@@ -39,7 +39,8 @@ module.exports = {
      async deleteSource(req, res) {
         const sourceId = +req.params.id
         try {
-            const source = await SourceRepository.getById(sourceId)
+            const repo = new SourceRepository()
+            const source = await repo.getById(sourceId)
           if(!source) return res.status(400).json({ message: 'Invalid Operation', success: false })
           await source.destroy()
           return res.status(200).json({ message: 'Source Delete Successfully', success: true })
