@@ -24,6 +24,7 @@ module.exports = (app) => {
     app.post('/product/favorite/:id', [auth], ProductsController.favoriteProduct)
     app.delete('/product/unfavorite/:id', [auth], ProductsController.unfavoriteProduct)
     app.get('/product/favorites', [auth], ProductsController.getAllFavoriteProducts)
+    app.get('/admin/favorites', [auth, isAdmin], ProductsController.getAllFavoriteProductsWithUser)
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
     app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)

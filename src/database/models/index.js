@@ -38,9 +38,13 @@ db.Sequelize = Sequelize;
 // db.User.belongsToMany(db.Product, { through: db.FavoriteProduct })
 // db.Product.belongsToMany(db.User, { through: db.FavoriteProduct })
 
+// db.User.belongsToMany(db.Product, { through: db.FavoriteProduct })
+// db.Product.belongsToMany(db.User, { through: db.FavoriteProduct })
 db.User.hasMany(db.FavoriteProduct)
 db.FavoriteProduct.belongsTo(db.User)
 db.Product.hasMany(db.FavoriteProduct)
 db.FavoriteProduct.belongsTo(db.Product)
+
+
 
 module.exports = db;

@@ -123,5 +123,19 @@ module.exports = {
       }
     })
     return res.status(200).json({ data: favorites })
+  },
+  async getAllFavoriteProductsWithUser(req, res) {
+    let productWithUsers = await User.findAll({
+      include: {
+        model: FavoriteProduct,
+        include: FavoriteProduct,
+        include: {
+          model: Product
+        }
+      }
+    })
+
+    return res.status(200).json({ data: productWithUsers })
+
   }
 }
