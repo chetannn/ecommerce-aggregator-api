@@ -44,7 +44,8 @@ db.User.hasMany(db.FavoriteProduct)
 db.FavoriteProduct.belongsTo(db.User)
 db.Product.hasMany(db.FavoriteProduct)
 db.FavoriteProduct.belongsTo(db.Product)
-
+db.Source.hasMany(db.CategoryLink)
+db.CategoryLink.belongsTo(db.Source)
 
 
 module.exports = db;

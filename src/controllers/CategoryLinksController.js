@@ -1,4 +1,4 @@
-const { CategoryLink } = require('../database/models')
+const { CategoryLink, Source } = require('../database/models')
 const  { Pagination } = require('../helpers/pagination')
 
 module.exports = {
@@ -92,12 +92,13 @@ module.exports = {
         try {
             const sourceId = +req.params.sourceId
             const categoryLinks = await CategoryLink.findAll({
+                include: Source,
                 where: {
                     sourceId
                 }
             })
 
-            if(!(categoryLinks && categoryLinks.length === 0))
+            if(!categoryLinks)
                 return res.status(400).json({ success: true, data: null, message: 'Category Links not found' })
 
             return res.json({ success: true, message: 'Category Links found', data: categoryLinks })

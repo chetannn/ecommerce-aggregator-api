@@ -33,7 +33,7 @@ module.exports = (app) => {
     app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
     app.get('/categoryLinks', [auth, isAdmin], CategoryLinksController.getAll)
     app.post('/categoryLinks', [auth, isAdmin], CategoryLinksController.createCategoryLink)
-    app.get('/categoryLinks/:sourceId', [auth, isAdmin], CategoryLinksController.getCategoryLinksBySourceId)
+    app.get('/categoryLinks/source/:sourceId', [auth, isAdmin], CategoryLinksController.getCategoryLinksBySourceId)
     app.get('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.getById)
     app.delete('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.deleteCategoryLink)
     app.put('/categoryLinks/:id', [auth, isAdmin], CategoryLinksController.updateCategoryLink)
