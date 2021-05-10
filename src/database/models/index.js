@@ -8,6 +8,7 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../../config/config.json')[env];
 const db = {};
 
+
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -33,5 +34,13 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// db.User.belongsToMany(db.Product, { through: db.FavoriteProduct })
+// db.Product.belongsToMany(db.User, { through: db.FavoriteProduct })
+
+db.User.hasMany(db.FavoriteProduct)
+db.FavoriteProduct.belongsTo(db.User)
+db.Product.hasMany(db.FavoriteProduct)
+db.FavoriteProduct.belongsTo(db.Product)
 
 module.exports = db;

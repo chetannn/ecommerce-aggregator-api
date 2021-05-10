@@ -21,6 +21,9 @@ module.exports = (app) => {
     app.get('/products', [auth], ProductsController.getAllProducts),
     app.post('/products', [auth, isAdmin], ProductsController.createProduct)
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)
+    app.post('/product/favorite/:id', [auth], ProductsController.favoriteProduct)
+    app.delete('/product/unfavorite/:id', [auth], ProductsController.unfavoriteProduct)
+    app.get('/product/favorites', [auth], ProductsController.getAllFavoriteProducts)
     app.post('/sources', [auth, isAdmin], SourceController.createSource)
     app.get('/sources', [auth], SourceController.getAll)
     app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)
