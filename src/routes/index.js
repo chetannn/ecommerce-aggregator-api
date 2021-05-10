@@ -17,6 +17,7 @@ module.exports = (app) => {
     app.get('/auth/me', [auth], AuthenticationController.me),
     app.get('/users', [auth, isAdmin], UsersController.getAllUsers),
     app.get('/users/:id', [auth, isAdmin], UsersController.getUserById)
+    app.put('/users/:id', [auth, isAdmin], UsersController.updateUser)
     app.get('/users/statistics', [auth, isAdmin], UsersController.getStatistics),
     app.put('/profile/update', [auth], UsersController.updateProfile),
     app.get('/products', [auth], ProductsController.getAllProducts),
@@ -30,6 +31,8 @@ module.exports = (app) => {
     app.get('/sources', [auth], SourceController.getAll)
     app.get('/sources/statistics', [auth, isAdmin], SourceController.getStatistics)
     app.delete('/sources/:id', [auth, isAdmin], SourceController.deleteSource)
+    app.get('/sources/:id', [auth, isAdmin], SourceController.getSourceById)
+    app.put('/sources/:id', [auth, isAdmin], SourceController.updateSource)
     app.post('/profile/avatar', [auth], UsersController.uploadAvatar)
     app.delete('/users/:id', [auth, isAdmin], UsersController.deleteUser)
     app.get('/categoryLinks', [auth, isAdmin], CategoryLinksController.getAll)

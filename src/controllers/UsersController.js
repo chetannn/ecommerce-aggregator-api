@@ -88,5 +88,21 @@ module.exports = {
   async getStatistics(req, res) {
     const result = await User.getStatistics()
     return res.status(200).json({ status: true, data: result[0] })
+ },
+ async updateUser(req, res) {
+    const userId = +req.params.id
+
+    try {
+       await User.update(req.body, {
+        where: {
+          id: userId
+        }
+      })
+
+      return res.json({ message: 'User Updated successfully', success: true })
+    }
+    catch(e) {
+      res.status(400).json({ message: e.message })
+    }
  }
 } 
