@@ -66,6 +66,25 @@ module.exports = {
       res.status(400).json({ message: e.message })
     }
   },
+  async getUserById(req, res) {
+    const userId = +req.params.id
+
+    try {
+      const user = await User.findOne({
+        where: {
+          id: userId
+        }
+      })
+
+      if(!user) return res.status(404).json({ message: 'User not found', success: false })
+      
+      return res.status(200).json({ message: 'User found Successfully', status: true, data: user })
+
+    }
+    catch(e) {
+      res.status(400).json({ message: e.message })
+    }
+  },
   async getStatistics(req, res) {
     const result = await User.getStatistics()
     return res.status(200).json({ status: true, data: result[0] })
