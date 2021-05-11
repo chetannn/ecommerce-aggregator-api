@@ -36,7 +36,7 @@ module.exports = {
 
             if(!categoryLink) return res.status(404).json({ success: true, data: null, message: 'Category Link not found' })
             
-            return res.status(404).json({ success: true, data: categoryLink, message: 'Category Link found' })
+            return res.status(200).json({ success: true, data: categoryLink, message: 'Category Link found' })
         }
         catch(e) {
             return res.status(400).json({ success: false, message: e.message })
@@ -78,10 +78,13 @@ module.exports = {
             })
 
             if(!categoryLink) return res.status(404).json({ success: true, data: null, message: 'Category Link not found' })
+
             const { sourceId, link  } = req.body
             categoryLink.sourceId = sourceId
             categoryLink.link = link
+
             await categoryLink.save()
+
             return res.json({ success: true, message: 'Category Link Updated Successfully', data: categoryLink })
         }
         catch(e) {
