@@ -1,11 +1,31 @@
 const { Product, FavoriteProduct, User } = require('../database/models')
 const { Pagination } = require('../helpers/pagination')
+const { Op } = require("sequelize");
+
 
 module.exports = {
   async getAllProducts(req, res) {
     try {
       //TODO: First get the total count from db
-      const count = await Product.count()
+      const minPrice = req.query.minPrice || 0
+      const maxPrice = req.query.maxPrice || 9999999999999
+      // if(req.query.maxPrice) {
+      //   maxPrice = req.query.maxPrice
+      // }
+      const productName = req.query.productName
+
+      const count = await Product.count({ 
+        where: {
+          price: {
+            [Op.gte]: minPrice,
+            [Op.lte]: maxPrice
+         },
+          productName: {
+            [Op.substring]: productName
+          }
+        }
+      })
+
       if (count == 0) return res.status(404).json({ message: 'products not found', data: null })
 
       const paginationInstance = new Pagination(count)
@@ -17,6 +37,13 @@ module.exports = {
 
       const products = await Product.findAll({
         where: {
+          price: {
+             [Op.gte]: minPrice,
+             [Op.lte]: maxPrice
+          },
+          productName: {
+            [Op.substring]: productName
+          }
         },
         offset,
         limit
