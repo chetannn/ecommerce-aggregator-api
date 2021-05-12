@@ -26,7 +26,11 @@ module.exports = {
         salt
       )
       const userFromDb = await User.create(userFromRequest)
-      res.status(201).json({ user: userFromDb.toJSON() })
+
+      let userJson = userFromDb.toJSON()
+      delete userJson.password
+      res.status(201).json({ user: userJson })
+
     } catch (err) {
       console.log(err)
       res.status(400).send({

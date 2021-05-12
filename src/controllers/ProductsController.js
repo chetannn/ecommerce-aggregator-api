@@ -7,24 +7,46 @@ module.exports = {
   async getAllProducts(req, res) {
     try {
       //TODO: First get the total count from db
-      const minPrice = req.query.minPrice || 0
-      const maxPrice = req.query.maxPrice || 9999999999999
+      const minPrice = +req.query.minPrice || 0
+      const maxPrice = +req.query.maxPrice
       // if(req.query.maxPrice) {
       //   maxPrice = req.query.maxPrice
       // }
-      const productName = req.query.productName
+      const productName = req.query.productName || null
+      const sourceId = req.query.sourceId
 
-      const count = await Product.count({ 
-        where: {
-          price: {
-            [Op.gte]: minPrice,
-            [Op.lte]: maxPrice
-         },
-          productName: {
-            [Op.substring]: productName
-          }
-        }
-      })
+      let queryObject = {};
+      queryObject.where = {};
+
+      if(productName !== null) {
+        queryObject.where.productName = { [Op.substring]: productName }
+      }
+
+      if(maxPrice) {
+        queryObject.where.price = { [Op.gte]: maxPrice }
+      }
+
+      if(minPrice) {
+        queryObject.where.price = { [Op.lte]: minPrice }
+      }
+
+      if(sourceId) {
+        queryObject.where.sourceId = { [Op.eq]: sourceId }
+      }
+
+      // const count = await Product.count({ 
+      //   where: {
+      //     price: {
+      //       [Op.gte]: minPrice,
+      //       [Op.lte]: maxPrice,
+      //    },
+      //     productName: {
+      //       [Op.substring]: productName
+      //     }
+      //   }
+      // })
+
+      const count = await Product.count(queryObject)
 
       if (count == 0) return res.status(404).json({ message: 'products not found', data: null })
 
@@ -35,19 +57,10 @@ module.exports = {
       const offset = (paginationInstance.currentPage - 1) * paginationInstance.perPage
       const limit = paginationInstance.perPage
 
-      const products = await Product.findAll({
-        where: {
-          price: {
-             [Op.gte]: minPrice,
-             [Op.lte]: maxPrice
-          },
-          productName: {
-            [Op.substring]: productName
-          }
-        },
-        offset,
-        limit
-      })
+      queryObject.offset = offset
+      queryObject.limit = limit
+
+      const products = await Product.findAll(queryObject)
 
       paginationInstance.items = products
 

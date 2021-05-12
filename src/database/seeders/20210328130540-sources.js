@@ -6,12 +6,14 @@ module.exports = {
      * Add seed commands here.
      *
      */
-      await queryInterface.bulkInsert('Sources', [{
-        name: "Daraz",
-        url: "http://daraz.com.np",
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },{
+      await queryInterface.bulkInsert('Sources', [
+      //   {
+      //   name: "Daraz",
+      //   url: "http://daraz.com.np",
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // },
+      {
         name: "Sastodeal",
         url: "https://sastodeal.com",
         createdAt: new Date(),
@@ -19,6 +21,11 @@ module.exports = {
       },{
         name: "OkDam",
         url: "https://okdam.com",
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }, {
+        name: "Muncha",
+        url: "https://muncha.com",
         createdAt: new Date(),
         updatedAt: new Date()
       }], {});

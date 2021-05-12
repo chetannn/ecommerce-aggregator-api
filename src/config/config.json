@@ -2,12 +2,9 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "database_development",
+    "database": "nepagator_db",
     "host": "127.0.0.1",
-    "dialect": "sqlite",
-     "dialectOptions": {
-      "storage": "scrapper.sqlite3"
-    },
+    "dialect": "mysql",
     "authentication": {
       "jwtSecret": "supersecretkey"
     },

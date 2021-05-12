@@ -20,6 +20,9 @@ module.exports = {
       source: {
         type: Sequelize.STRING
       },
+      sourceId: {
+        type: Sequelize.INTEGER
+      },
       imageUrl: {
         type: Sequelize.STRING
       },

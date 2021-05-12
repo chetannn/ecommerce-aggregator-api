@@ -12,6 +12,13 @@ const config = {
         price: 'div.product-box > div.product-inner > p.p-price-tag > span.og-price',
         imageUrl: 'div.product-box > a > img',
         productLink: 'a'
+    },
+    MUNCHA: {
+        container: '.row > .col-xs-6.col-md-3',
+        productName: '.product-caption > h5.product-caption-title-sm',
+        price: '.product-caption > div.product-caption-price > span.product-caption-price-new',
+        imageUrl: '.product-img-wrap > img.product-img-primary',
+        productLink: 'a'
     }
 }
 
