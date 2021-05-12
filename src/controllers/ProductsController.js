@@ -18,19 +18,25 @@ module.exports = {
       let queryObject = {};
       queryObject.where = {};
 
-      if(productName !== null) {
+      if (productName !== null) {
         queryObject.where.productName = { [Op.substring]: productName }
       }
 
-      if(maxPrice) {
-        queryObject.where.price = { [Op.gte]: maxPrice }
+      if (minPrice && maxPrice) {
+        queryObject.where.price = { [Op.gte]: minPrice, [Op.lte]: maxPrice }
+      }
+      else {
+
+        if (maxPrice) {
+          queryObject.where.price = { [Op.gte]: maxPrice }
+        }
+
+        if (minPrice) {
+          queryObject.where.price = { [Op.lte]: minPrice }
+        }
       }
 
-      if(minPrice) {
-        queryObject.where.price = { [Op.lte]: minPrice }
-      }
-
-      if(sourceId) {
+      if (sourceId) {
         queryObject.where.sourceId = { [Op.eq]: sourceId }
       }
 
