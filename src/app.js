@@ -3,6 +3,7 @@ const logger = require('morgan')
 const cors = require('cors')
 const path = require('path')
 const errorHandler = require('./middleware/errorHandler')
+const scheduler = require('./scheduler')
 
 const app = express()
 
@@ -15,6 +16,8 @@ require('./routes')(app)
 require('dotenv').config()
 
 app.use(errorHandler)
+
+scheduler.start()
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`🚀🚀 Server listening on: ${PORT}`))

@@ -1,48 +1,66 @@
 const cheerio = require('cheerio')
 const request = require('request')
-const fs = require('fs')
 const { SASTODEAL } = require('./config')
+const { Product, CategoryLink } = require('../database/models')
 
-const url = 'https://www.sastodeal.com/electronic/televisions/samsung.html'
+class SastodealScrapper {
 
-request(url, (err, response, body) => {
-  if (err) throw new Error(err)
+  scrap(categoryLink) {
 
-  const products = []
-  const $ = cheerio.load(response.body, {
-    xml: {
-      xmlMode: true
-    }
-  })
-  $(SASTODEAL.container).each(function (item, idx) {
-    const productName = $(this)
-      .find(SASTODEAL.productName)
-      .text()
-      .trim()
+    const urlToScrape = `${categoryLink.Source.url}${categoryLink.link}`
 
-    const price = $(this).find(SASTODEAL.price).data('price-amount')
-    const productLink = $(this).find(SASTODEAL.productLink).attr('href')
-    const imageUrl = $(this).find(SASTODEAL.imageUrl).html()
+    request(urlToScrape, async (err, response, body) => {
+      if (err) throw new Error(err)
 
-    const finalImageUrl = imageUrl
-      .split('\n')[0]
-      .split(' ')[3]
-      .split('=')[1]
-      .split('"')[1]
+      const $ = cheerio.load(response.body, {
+        xml: {
+          xmlMode: true
+        }
+      })
 
-    const product = {
-      productName,
-      productLink,
-      price,
-      source: 'Sastodeal',
-      imageUrl: finalImageUrl
-    }
+      $(SASTODEAL.container).each(async function (item, idx) {
+        const productName = $(this)
+          .find(SASTODEAL.productName)
+          .text()
+          .trim()
 
-    products.push(product)
-  })
-  
-  let productJSON = JSON.stringify(products)
-  fs.writeFile('products.json', productJSON, (err, data) => {
-    if (err) throw new Error(err)
-  })
-})
+        const price = $(this).find(SASTODEAL.price).data('price-amount')
+        const productLink = $(this).find(SASTODEAL.productLink).attr('href')
+        const imageUrl = $(this).find(SASTODEAL.imageUrl).html()
+
+        const finalImageUrl = imageUrl
+          .split('\n')[0]
+          .split(' ')[3]
+          .split('=')[1]
+          .split('"')[1]
+
+
+        const product = {
+          productName,
+          productLink,
+          price,
+          source: 'Sastodeal',
+          sourceId: 1,
+          imageUrl: finalImageUrl
+        }
+
+        console.log('product::', product)
+
+        await Product.create(product)
+
+      })
+
+      await CategoryLink.update({
+        hasScrapped: true
+      }, {
+        where: {
+          id: categoryLink.id
+        }
+      })
+
+
+    })
+  }
+}
+
+module.exports = SastodealScrapper

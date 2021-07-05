@@ -1,39 +1,61 @@
 const cheerio = require('cheerio')
 const request = require('request')
-const fs = require('fs')
 const { OKDAM } = require('./config')
+const { Product, CategoryLink } = require('../database/models')
 
-const url = 'https://www.okdam.com/category/camera-and-accessories'
+class OkScrapper {
 
-request(url, (err, response, body) => {
-  if (err) throw new Error(err)
+   scrap(categoryLink) {
+    const urlToScrape = `${categoryLink.Source.url}${categoryLink.link}`
 
-  const products = []
-  const $ = cheerio.load(body)
+    request(urlToScrape, async (err, response, body) => {
+      if (err) throw new Error(err)
 
-  const container = $(OKDAM.container)
-  $(container).each(function(idx, elem) {
-      const productLink = $(this).find('a').attr('href')
-      const imageUrl = $(this).find(OKDAM.imageUrl).data('src')
-      const productName = $(this).find(OKDAM.productName).text().trim()
-      const price = $(this).find(OKDAM.price).text().trim().replace('NPR', '').replace(',', '')
-    
-      const product = {
-        productName,
-        productLink,
-        price,
-        source: 'Okdam',
-        imageUrl
+      const $ = cheerio.load(body)
+      const container = $(OKDAM.container)
+
+      try {
+        $(container).each(async function (idx, elem) {
+          const productLink = $(this).find('a').attr('href')
+          const imageUrl = $(this).find(OKDAM.imageUrl).data('src')
+          const productName = $(this).find(OKDAM.productName).text().trim()
+          const price = $(this).find(OKDAM.price).text().trim().replace('NPR', '').replace(',', '')
+
+          const product = {
+            productName,
+            productLink,
+            price,
+            source: 'Okdam',
+            sourceId: 2,
+            imageUrl
+          }
+
+          console.log(product)
+
+          await Product.create(product)
+
+        })
+
+        await CategoryLink.update({
+          hasScrapped: true
+        }, {
+          where: {
+            id: categoryLink.id
+          }
+        })
+
       }
-  
-      products.push(product)
-  })
 
-  let productJSON = JSON.stringify(products)
-  fs.writeFile('products-ok.json', productJSON, (err, data) => {
-    if (err) throw new Error(err)
-  })
-  
-})
+      catch (e) {
+        console.log(e)
+      }
+
+    })
+  }
+}
+
+module.exports = OkScrapper
+
+
 
 

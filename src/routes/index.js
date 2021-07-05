@@ -18,8 +18,9 @@ module.exports = (app) => {
     app.get('/users', [auth, isAdmin], UsersController.getAllUsers),
     app.get('/users/:id', [auth, isAdmin], UsersController.getUserById)
     app.put('/users/:id', [auth, isAdmin], UsersController.updateUser)
-    app.get('/users/statistics', [auth, isAdmin], UsersController.getStatistics),
+    app.get('/statistics/users', [auth, isAdmin], UsersController.getStatistics),
     app.put('/profile/update', [auth], UsersController.updateProfile),
+    app.get('/dashboard', [auth, isAdmin], ProductsController.getDashboard),
     app.get('/products', [auth], ProductsController.getAllProducts),
     app.post('/products', [auth, isAdmin], ProductsController.createProduct)
     app.post('/products/bulk', [auth, isAdmin], ProductsController.createBulkProduct)

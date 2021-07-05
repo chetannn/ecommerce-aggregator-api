@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   CategoryLink.init({
     link: DataTypes.STRING,
-    sourceId: DataTypes.INTEGER
+    sourceId: DataTypes.INTEGER,
+    hasScrapped: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'CategoryLink',

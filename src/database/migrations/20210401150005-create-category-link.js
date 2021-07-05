@@ -14,6 +14,10 @@ module.exports = {
       sourceId: {
         type: Sequelize.INTEGER
       },
+      hasScrapped: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

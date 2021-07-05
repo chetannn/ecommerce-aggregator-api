@@ -1,54 +1,63 @@
-(async function () {
-    const cheerio = require('cheerio')
-    const request = require('request')
-    const { MUNCHA } = require('./config')
-    const { Product, CategoryLink, Source } = require('../database/models')
+const cheerio = require('cheerio')
+const request = require('request')
+const { MUNCHA } = require('./config')
+const { Product, CategoryLink } = require('../database/models')
 
-    const categoryLink = await CategoryLink.findOne({
-        where: {
-            sourceId: 3
-        },
-        include: Source,
-        order: [['createdAt', 'DESC']]
-    })
+class MunchaScrapper {
 
-    const urlToScrape = `${categoryLink.Source.url}${categoryLink.link}`
+    scrap(categoryLink) {
+        const urlToScrape = `${categoryLink.Source.url}${categoryLink.link}`
 
-    request(urlToScrape, (err, response, body) => {
+        request(urlToScrape, async (err, response, body) => {
 
-        if (err) throw new Error(err)
+            if (err) throw new Error(err)
 
-        const $ = cheerio.load(body)
-        const container = $(MUNCHA.container)
+            const $ = cheerio.load(body)
+            const container = $(MUNCHA.container)
 
-        $(container).each(async function (idx, elem) {
-            try {
-                const productLink = categoryLink.Source.url + $(this).find(MUNCHA.productLink).attr('href')
-                const imageUrl = $(this).find(MUNCHA.imageUrl).attr('src')
-                const productName = $(this).find(MUNCHA.productName).attr('title')
-                const price = $(this).find(MUNCHA.price).text()
-                    .replace('Rs.', '')
-                    .replace(',', '')
+            $(container).each(async function (idx, elem) {
+                try {
+                    const productLink = categoryLink.Source.url + $(this).find(MUNCHA.productLink).attr('href')
+                    const imageUrl = $(this).find(MUNCHA.imageUrl).attr('src')
+                    const productName = $(this).find(MUNCHA.productName).attr('title')
+                    const price = $(this).find(MUNCHA.price).text()
+                        .replace('Rs.', '')
+                        .replace(',', '')
 
-                const product = {
-                    productName,
-                    productLink,
-                    price,
-                    source: 'Muncha',
-                    sourceId: 3,
-                    imageUrl
+                    const product = {
+                        productName,
+                        productLink,
+                        price,
+                        source: 'Muncha',
+                        sourceId: 3,
+                        imageUrl
+                    }
+
+                    console.log('product::', product)
+
+                    await Product.create(product)
                 }
 
-                await Product.create(product)
-            }
+                catch (e) {
+                    console.log(e)
+                }
 
-            catch (e) {
-                console.log(e)
-            }
+            })
 
+            await CategoryLink.update({
+                hasScrapped: true
+            }, {
+                where: {
+                    id: categoryLink.id
+                }
+            })
         })
-    })
-})()
+    }
+}
+
+module.exports = MunchaScrapper
+
+
 
 
 

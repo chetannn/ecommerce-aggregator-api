@@ -1,6 +1,6 @@
-const { Product, FavoriteProduct, User } = require('../database/models')
+const { Product, FavoriteProduct, User, sequelize } = require('../database/models')
 const { Pagination } = require('../helpers/pagination')
-const { Op } = require("sequelize");
+const { Op , QueryTypes } = require("sequelize");
 
 
 module.exports = {
@@ -28,11 +28,11 @@ module.exports = {
       else {
 
         if (maxPrice) {
-          queryObject.where.price = { [Op.gte]: maxPrice }
+          queryObject.where.price = { [Op.lte]: maxPrice }
         }
 
         if (minPrice) {
-          queryObject.where.price = { [Op.lte]: minPrice }
+          queryObject.where.price = { [Op.gte]: minPrice }
         }
       }
 
@@ -182,6 +182,14 @@ module.exports = {
     })
 
     return res.status(200).json({ data: productWithUsers })
+
+  },
+  async getDashboard(req, res) {
+    const users = await sequelize.query(`select
+    (select count(1) from Products where sourceId = 1 ) as sasto_count, 
+    (select count(1) from Products where sourceId = 2 ) as ok_count,
+    (select count(1) from Products where sourceId = 3 ) as muncha_count`, { type: QueryTypes.SELECT });
+    return res.json(users);
 
   }
 }
